@@ -1,0 +1,392 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manga</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon%20sleepy%20cat.gif" />
+    <link href="/style2.css" rel="stylesheet" type="text/css" media="all" />
+    <style>
+      body {
+        background: #000000 url("images/backgrounds/konata windows.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+      }
+
+      .page {
+        position: absolute;
+        background-color: rgb(204, 203, 203);
+        box-shadow:
+          inset -1px -1px #0a0a0a,
+          inset 1px 1px #dfdfdf,
+          inset -2px -2px grey,
+          inset 2px 2px #fff;
+        padding: 5px;
+        height: 500px;
+        width: 500px;
+        display: none;
+      }
+
+      button {
+        border: hidden;
+        cursor: pointer;
+      }
+
+      button.icon {
+        background-color: transparent;
+        width: 50px;
+        height: 50px;
+      }
+
+      button.control {
+        background-color: rgb(204, 203, 203);
+        box-shadow:
+          inset -1px -1px #0a0a0a,
+          inset 1px 1px #dfdfdf,
+          inset -2px -2px grey,
+          inset 2px 2px #fff;
+        height: 20px;
+        width: 20px;
+        margin: 0 2px;
+        float: right;
+      }
+
+      button.control:active {
+        background-color: rgb(204, 203, 203);
+        box-shadow:
+          inset 1px 1px #0a0a0a,
+          inset -1px -1px #dfdfdf,
+          inset 2px 2px grey,
+          inset -2px -2px #fff;
+      }
+      
+      .link{
+        width: 50px;
+        height: 50px;
+      }
+
+      .title {
+        background: linear-gradient(to top left, #5289db, #aa6de7);
+        height: 24px;
+        padding: 2px;
+      }
+
+      .content {
+        background: #fff;
+        box-shadow:
+          inset -1px -1px #fff,
+          inset 1px 1px grey,
+          inset -2px -2px #dfdfdf,
+          inset 2px 2px #0a0a0a;
+        padding: 5px;
+        margin: 5px;
+        max-height: 433px;
+        overflow: auto;
+      }
+
+      .manga {
+        overflow: hidden;
+        margin: 10px 2px;
+        padding: 3px;
+      }
+
+      .manga .cover {
+        float: left;
+        height: 150px;
+      }
+
+      .manga .desc {
+        margin-left: 115px;
+        padding: 2px;
+      }
+
+      #yuri .manga {
+        border: 7px solid;
+        border-image: url(images/other/blom.png) round 7;
+        border-image-outset: 4px;
+        background-image: url(images/backgrounds/ruit.png);
+      }
+
+      #yuri .desc {
+        background: #fff;
+        box-shadow:
+          0px 0px 10px 2px #ff75af,
+          0px 0px 10px -2px inset #ff75af;
+      }
+
+      #SOL .manga {
+        border: 7px solid;
+        border-image: url(images/other/clover.png) round 8;
+        border-image-outset: 4px;
+        background-image: url(images/backgrounds/greenstripes.png);
+      }
+
+      #SOL .desc {
+        background: #fff;
+        box-shadow:
+          0px 0px 10px 2px #88ff5d,
+          0px 0px 10px -2px inset #88ff5d;
+      }
+
+      #psychological .manga {
+        border: 1px solid;
+        box-shadow: 0px 0px 10px 2px #000;
+        background-image: url(images/backgrounds/gloop.png);
+      }
+
+      #psychological .desc {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0px 0px 10px 2px #000,
+          0px 0px 10px -2px inset #000;
+      }
+
+      #action .manga {
+        border: 1px solid;
+        box-shadow: 0px 0px 10px 2px #000;
+        background-image: url(images/backgrounds/nacht.png);
+      }
+
+      #action .desc {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0px 0px 10px 2px #000,
+          0px 0px 10px -2px inset #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button type="button" class="icon" onclick="toggleYuri()"><img src="images/other/lily.gif" />Yuri</button>
+    <button type="button" class="icon" onclick="toggleSOL()">
+      <img src="images/other/konata icon.png" />Slice of Life
+    </button>
+    <button type="button" class="icon" onclick="toggleAction()"><img src="images/other/knife2.gif" />Action</button>
+    <button type="button" class="icon" onclick="togglePsychological()">
+      <img src="images/other/computer.gif" />Psycho- logical
+    </button>
+    <div class="link"><a href="/home"><img src="images/other/house.gif">Home</a></div>
+    <div class="link"><a href="/about"><img src="images/other/jellyfish1.gif">About</a></div>
+    <div class="link"><a href="/art"><img src="images/other/palette.gif">Art</a></div>
+    <div class="link"><a href="/sitemap.html"><img src="images/other/globe.gif">Sitemap</a></div>
+
+    <div class="page" id="yuri">
+      <div class="title">
+        <button type="button" class="control">-</button>
+        <button type="button" class="control">□</button>
+        <button type="button" class="control">X</button>
+        <h2>Yuri</h2>
+      </div>
+      <p>genre winner: I Love Amy</p>
+      <div class="content">
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/2/311477l.jpg" class="cover" />
+          <div class="desc">
+            <h3>I Love Amy</h3>
+            <p>A love story between a yandere and a shy girl. I really love the depiction of mental illness here</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/1/185918.jpg" class="cover" />
+          <div class="desc">
+            <h3>Girls' Last Tour</h3>
+            <p>Beautifully illustrated story about two girls traveling at the end of the world. Will make you cry!</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/2/227584.jpg" class="cover" />
+          <div class="desc">
+            <h3>Shimeji simulation</h3>
+            <p>
+              The same author as Girls' last tour. Two girls getting along in a bizarre world. This is also my nr. 1
+              favorite!
+            </p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/3/130549.jpg" class="cover" />
+          <div class="desc">
+            <h3>Qualia the Purple</h3>
+            <p>
+              Another one that i don't want to say too much about... if you liked Madoka Magica, you'll probably like
+              this one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page" id="SOL">
+      <div class="title">
+        <button type="button" class="control">-</button>
+        <button type="button" class="control">□</button>
+        <button type="button" class="control">X</button>
+        <h2>Slice of life</h2>
+      </div>
+      <p>genre winner: Hirayasumi</p>
+      <div class="content">
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/2/249992.jpg" class="cover" />
+          <div class="desc">
+            <h3>Hirayasumi</h3>
+            <p>
+              Laid back story about the life of a 29 year old part timer and his cousin, who just started art school.
+              Best Slice of Life imo!
+            </p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/2/174018.jpg" class="cover" />
+          <div class="desc">
+            <h3>Our Dreams at Dusk: Shimanami Tasogare</h3>
+            <p>This one dives into the lives of a group of queer people. Very raw, will probably make you cry.</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/2/208224.jpg" class="cover" />
+          <div class="desc">
+            <h3>It's hard beeing Neeko!</h3>
+            <p>A NEET girl tries getting her life back in order. Very well written but a weird amount of fanservice.</p>
+            <img src="images/blinkies/mine/itstoughbeingneeko.gif" alt="its tough being Neeko" />
+            <img src="images/blinkies/mine/neekokana.gif" alt="ニー子はつらいよ" />
+            <img src="images/blinkies/mine/neekowatsuraiyo.gif" alt="neeko wa tsurai yo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page" id="action">
+      <div class="title">
+        <button type="button" class="control">-</button>
+        <button type="button" class="control">□</button>
+        <button type="button" class="control">X</button>
+        <h2>Action</h2>
+      </div>
+      <p>genre winner: idk</p>
+      <div class="content">
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/2/255378.jpg" class="cover" />
+          <div class="desc">
+            <h3>Claymore</h3>
+            <p>Grim story about half-monster girls that fight monsters. Very beautiful</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/1/145061.jpg" class="cover" />
+          <div class="desc">
+            <h3>Neon Genesis Evangelion</h3>
+            <p>You already know EVA. 14 year old kids fight angels in mechs. its awesome</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/1/188787.jpg" class="cover" />
+          <div class="desc">
+            <h3>School-Live!</h3>
+            <p>Focuses around the school living club, that try and live at school!</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/3/274069.jpg" class="cover" />
+          <div class="desc">
+            <h3>Talentless Nana</h3>
+            <p>A group of students with superpowers go to school on a remote island.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page" id="psychological">
+      <div class="title">
+        <button type="button" class="control">-</button>
+        <button type="button" class="control">□</button>
+        <button type="button" class="control">X</button>
+        <h2>Psychological</h2>
+      </div>
+      <p>genre winner: idk</p>
+      <div class="content">
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/3/258224.jpg" class="cover" />
+          <div class="desc">
+            <h3>Monster</h3>
+            <p>If you save someones life, and that person goes on to do horrible things, are you responsible?</p>
+          </div>
+        </div>
+        <div class="manga">
+          <img src="https://cdn.myanimelist.net/images/manga/3/73061.jpg" class="cover" />
+          <div class="desc">
+            <h3>Pink</h3>
+            <p>The strange life of a part-time office lady, part-time prostitute that owns a pet crocodile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const dragElements = document.querySelectorAll(".page");
+
+      function onMouseDrag(event, element) {
+        let leftValue = parseInt(window.getComputedStyle(element).left);
+        let topValue = parseInt(window.getComputedStyle(element).top);
+        element.style.left = `${leftValue + event.movementX}px`;
+        element.style.top = `${topValue + event.movementY}px`;
+      }
+
+      dragElements.forEach((element) => {
+        element.addEventListener("mousedown", (e) => {
+          const onMove = (event) => onMouseDrag(event, element);
+
+          document.addEventListener("mousemove", onMove);
+          document.addEventListener(
+            "mouseup",
+            () => {
+              document.removeEventListener("mousemove", onMove);
+            },
+            { once: true }
+          );
+        });
+      });
+      
+      function toggleYuri() {
+        var yuri = document.getElementById("yuri");
+        if (yuri.style.display != "block") {
+          yuri.style.display = "block";
+        } else {
+          yuri.style.display = "none";
+        }
+      }
+      
+      function toggleSOL() {
+        var x = document.getElementById("SOL");
+        if (x.style.display != "block") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      
+      function toggleAction() {
+        var x = document.getElementById("action");
+        if (x.style.display != "block") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      
+      function togglePsychological() {
+        var x = document.getElementById("psychological");
+        if (x.style.display != "block") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      
+      function exitPage()
+      {
+        
+      }
+    </script>
+  </body>
+</html>
